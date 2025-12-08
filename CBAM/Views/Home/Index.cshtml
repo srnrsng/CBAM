@@ -1,0 +1,197 @@
+﻿@{
+    ViewData["Title"] = "Register - CBAM Portal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background: #f4f6f9;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-wrapper {
+        width: 100%;
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+
+    .form-container {
+        width: 90%;
+        max-width: 1100px;
+        margin: auto;
+        background: white;
+        padding: 50px;
+        border-radius: 16px;
+        box-shadow: 0px 8px 28px rgba(0,0,0,0.12);
+    }
+
+    .header-title {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+        .header-title h1 {
+            font-weight: 700;
+            color: #1f4e79;
+            margin-bottom: 8px;
+        }
+
+    .subtitle {
+        color: #6c757d;
+        font-size: 15px;
+    }
+
+    .row-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .input-group {
+        flex: 1 1 calc(50% - 20px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #22344d;
+    }
+
+    input, select {
+        height: 56px;
+        border-radius: 12px;
+        border: 1px solid #ced4da;
+        padding: 10px 16px;
+        font-size: 16px;
+        transition: 0.2s;
+    }
+
+        input:focus, select:focus {
+            border-color: #1f4e79;
+            box-shadow: 0px 0px 8px rgba(31,78,121,0.25);
+            outline: none;
+        }
+
+    .full-width {
+        flex: 1 1 100%;
+    }
+
+    .btn-primary {
+        width: 100%;
+        margin-top: 30px;
+        height: 56px;
+        border-radius: 12px;
+        background: #1f4e79;
+        border: none;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        transition: 0.2s;
+    }
+
+        .btn-primary:hover {
+            background: #173b5c;
+        }
+
+    .login-link {
+        text-align: center;
+        margin-top: 22px;
+        font-size: 15px;
+    }
+
+        .login-link a {
+            color: #1f4e79;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+    @@media (max-width: 768px) {
+        .input-group {
+            flex: 1 1 100%;
+        }
+
+        .form-container {
+            padding: 25px;
+        }
+    }
+</style>
+
+<div class="page-wrapper">
+
+    <div class="form-container">
+
+        <div class="header-title">
+            <h1>CBAM Organisation Registration</h1>
+            <p class="subtitle">Register your organisation to begin CBAM compliance & reporting</p>
+        </div>
+
+        <form method="post" asp-controller="Account" asp-action="Register">
+
+            <div class="row-flex">
+
+                <div class="input-group full-width">
+                    <label>Name of Organisation</label>
+                    <input type="text" name="OrganizationName" placeholder="e.g. ACME Steel Pvt Ltd" required />
+                </div>
+
+                <div class="input-group full-width">
+                    <label>Primary Economic Activity</label>
+                    <select name="PrimaryActivity" required>
+                        <option value="">Select economic activity</option>
+                        <option>Manufacturing – Steel & Alloys</option>
+                        <option>Manufacturing – Cement</option>
+                        <option>Manufacturing – Chemicals</option>
+                        <option>Import / Trading</option>
+                        <option>Logistics / Shipping</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>CIN Number</label>
+                    <input type="text" name="CIN" placeholder="Corporate Identification Number" />
+                </div>
+
+                <div class="input-group">
+                    <label>Country Code</label>
+                    <input type="text" name="CountryCode" placeholder="+91" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Contact Email</label>
+                    <input type="email" name="ContactEmail" placeholder="contact@company.com" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Contact Phone</label>
+                    <input type="text" name="ContactPhone" placeholder="9876543210" required />
+                </div>
+
+                <!-- 🔐 Password Fields Added -->
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="Password" placeholder="Enter password" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="ConfirmPassword" placeholder="Re-enter password" required />
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn-primary">Register Organisation</button>
+
+            <div class="login-link">
+                Already have an account?
+                <a asp-controller="Home" asp-action="Login">Login</a>
+            </div>
+
+        </form>
+    </div>
+</div>

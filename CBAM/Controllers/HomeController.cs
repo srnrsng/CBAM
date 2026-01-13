@@ -12,6 +12,7 @@ namespace CBAM.Controllers
         {
             _logger = logger;
         }
+        //hjhhjhjhj
         public IActionResult Index()
         {
             return View();
